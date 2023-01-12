@@ -1,0 +1,26 @@
+.topnav{
+
+    height: 80px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 40px;
+}
+
+.contents{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+}
+
+.link-active{
+    text-decoration: none;
+    color: #5FACF3;
+    font-weight: 600;
+}

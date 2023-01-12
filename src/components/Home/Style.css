@@ -1,0 +1,121 @@
+body{
+
+    background: #F7FCFB;
+}
+.upperSection{
+    width: 100%;
+    height: 422px;
+    left: 0px;
+    top: 109px;
+    right: 0px;
+    background: #D2E7FC;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.mainText{
+
+    width: 100%;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 130%;
+    /* or 42px */
+
+    text-align: center;
+    color: #1E1E1E;
+    
+}
+
+.subText{
+
+    width: 100%;
+    margin-top: 12px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 130%;
+    /* or 21px */
+
+    text-align: center;
+    color: #5F5F5F;
+    
+}
+
+.Register{
+
+    width: 340px;
+    height: 60px;
+
+    background-color: #5FACF3;
+    color: white;
+    border: none;
+    border-radius: 10px;
+
+    font-weight: 400;
+    font-size: 18px;
+
+}
+
+.button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+    background-color: transparent;
+    text-decoration: none;
+    
+}
+.left{
+    flex: 2;
+    justify-content: center;
+
+}
+.right{
+    flex: 1;
+    right: 0px;
+}
+
+.lowerSection{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.card-wrapper{
+    margin: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.card1{
+    
+    width: 280px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.25);
+}
+
+.uppercard1{
+
+    width: 280px;
+    height: 182px;
+    border-radius: 10px 10px 0px 0px;
+    background: #D2E7FC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-holder2{
+    height: 142px;
+}
+
+.text1{
+    text-align: center;
+    padding: 16px;
+}

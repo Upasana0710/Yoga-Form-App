@@ -1,0 +1,106 @@
+.full{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #F7F7F9;
+    width: 100%;
+    max-width: 1082px;
+}
+
+.cards{
+    display: flex;
+    justify-content: center;
+    max-width: 800px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.heading{
+    font-weight: 600;
+    font-size: 40px;
+    color: #292934;
+    padding-bottom: 52px;
+    padding-top: 26px;
+}
+
+.batchCard{
+    width: 350px;
+    background: #FDFDFD;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    margin: 20px;
+    
+}
+
+.upperPart1{
+    background: #F5B452;
+    border-radius: 8px 8px 0px 0px;
+    color: white;
+    padding-left: 12px;
+    padding-top: 12px;
+    
+}
+
+.upperPart2{
+    background: #277C54;
+    border-radius: 8px 8px 0px 0px;
+    color: white;
+    padding-left: 12px;
+    padding-top: 12px;
+}
+
+.upperPart3{
+    background: #5F55D0;
+    border-radius: 8px 8px 0px 0px;
+    color: white;
+    padding-left: 12px;
+    padding-top: 12px;
+}
+
+.upperPart4{
+    background: #F55252;
+    border-radius: 8px 8px 0px 0px;
+    color: white;
+    padding-left: 12px;
+    padding-top: 12px;
+}
+
+.batchName{
+    font-weight: 700;
+    font-size: 18px;
+
+}
+.maxCapacity{
+    padding-top: 10px;
+
+    padding-bottom: 12px;
+}
+
+.lowerPart{
+    padding-left: 12px;
+    padding-top: 12px;
+    padding-bottom: 20px;
+}
+
+.forBold{
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.capacity{
+    padding-top: 16px;
+}
+
+.price{
+    padding-top: 16px;
+}
+
+.amount{
+    color: #27AE60;
+}
