@@ -15,3 +15,4 @@ export const fetchPayment = (id) => API.get(`/payment/${id}`);
 export const deletePayment = (id) => API.delete(`/payment/${id}`);
 
 export const getBatches = () => API.get('/batch');
+export const getBatch = (id) => API.get(`/batch/${id}`);
