@@ -1,9 +1,11 @@
 import './Style.css'
 import React, { useEffect, useState } from 'react'
-import {createPayment, createUser, getBatches} from '../../api/index'
+import {createPayment, createUser, getBatches, getBatch} from '../../api/index'
 const Register = () => {
     // const dispatch = useDispatch()
-    const [user, setUser] = useState({first_name:'',last_name:'',phone_no:'',email:'',address:'',age:0,height:0,weight:0})
+    const [user, setUser] = useState({first_name:'',last_name:'',phone_no:'',email:'',address:'',gender:'',age:0,height:0,weight:0})
+
+    const [showLoading, setShowloading]=useState(false);
 
     const [payment, setPayment] = useState({price:0,batch_id:'',userId:''})
 
@@ -11,7 +13,8 @@ const Register = () => {
 
     const [userId, setUserId] = useState('')
 
-    const [batch_id, setBatch_id] = useState('')
+    const [price, setPrice] = useState(0)
+
     const [batches,setBatches] = useState([])
 
     useEffect(() =>{
@@ -21,28 +24,53 @@ const Register = () => {
     })
 
     const handleSubmit = async (e) => {
+        setShowloading(true)
+        if(user.first_name==='' || user.last_name==='' || user.phone_no==='' || user.email==='' || user.age==='' || user.gender=== '')
+        {
+            alert('Please fill the required fields!');
+        }
         setUser({...user,age:Number(user.age),height:Number(user.height),weight:Number(user.weight)});
         console.log(user)
         await createUser(user).then((res)=>{
             console.log(res)
             setUserId(res.data.user.id)
             setShowSubscription(false);
+            setShowloading(false);
         }).catch((error)=>{
             console.log(error)
+            setShowloading(false);
         })
     }
 
     const handleSubscribe = async (e) =>{
+        setShowloading(true)
+        if(payment.batch_id=== ''|| payment.userId=== ''){
+            alert('Please fill up the required fields!');
+        }
         setShowSubscription(true);
-        setPayment({...payment,price: Number(payment.price)});
+        // setPayment({...payment,price: Number(payment.price)});
+        
         setPayment({...payment,userId:userId})
+        
         console.log(payment)
         createPayment(payment).then((res)=>{
             console.log(res)
+            setShowloading(false)
         }).catch((error)=>{
             console.log(error)
+            setShowloading(false)
         })
 
+    }
+
+    const handleChange = async (e) =>{
+        setPayment({...payment,batch_id: e.target.value})
+        getBatch(payment.batch_id).then((res)=>{
+            setPrice(res.data.batch.price)
+            console.log(res.data.batch.price)
+            setPayment({...payment,price:price})
+        })
+        console.log(price);
     }
 
     return (
@@ -73,9 +101,8 @@ const Register = () => {
                                 <input className='input' type="number" placeholder='Age*' value={user.age === 0?'':user.age} onChange={(e)=>setUser({...user,age: parseInt(e.target.value)})}/>
                             </div>
                             <div >
-                                {/* <input className='input' type='text' placeholder='Gender*' value={user.gender} onChange={(e)=>setUser({...user,gender: e.target.value})}/> */}
                                 <select id='batches' name='gender' className='selectg' onChange={(e)=>setUser({...user,gender: e.target.value})}>
-                                <option value='MALE' className='options'>Gender*</option>
+                                <option value='' className='options'>Gender*</option>
                                 <option value='MALE' className='options'>MALE</option>
                                 <option value='FEMALE' className='options'>FEMALE</option>
                             </select>
@@ -90,7 +117,7 @@ const Register = () => {
                             </div>
                         </div>
                     </div>
-                    <button className='Button' onClick = {handleSubmit} >Create</button>
+                    <button className='Button' onClick = {handleSubmit} >{showLoading?<div class="loader"></div>:"Create"}</button>
                 </div>
 
 
@@ -104,18 +131,18 @@ const Register = () => {
                             <input className='input' type='text' placeholder='User ID*' value={userId} onChange={(e)=>setPayment({...payment,userId:userId})}/>
                         </div>
                         <div >
-                            <select id='batches' name='batches' className='select'onChange={(e)=>setPayment({...payment,batch_id: e.target.value})}>
+                            <select id='batches' name='batches' className='select'onChange={handleChange}>
                                 <option className='options'>Batch*</option>
                                 {batches.map((batch) => (
-                                    <option key ={batch.id} value={batch.id} className='options'>{`${batch.startTime} ${batch.endTime}`}</option>
+                                    <option key={batch.id} value={batch.id} className='options'>{(batch.startTime/60) < 12 ?`${batch.startTime/60}AM`:`${(batch.startTime/60)-12}PM`}-{(batch.endTime/60 < 12) ? `${batch.endTime/60}AM`:`${(batch.endTime/60)-12 }PM`}</option>
                                 ))}
                             </select>
                         </div>
                         <div className='inputBox'>
-                            <input className='input' type='text' placeholder='Price' value={payment.price === 0? '' : payment.price} onChange={(e)=>setPayment({...payment,price:e.target.value})}/>
+                            <input className='input' type='number' placeholder='Price*' value={price} />
                         </div>
                     </div>
-                    <button className='Button' onClick={handleSubscribe}>Subscribe</button>
+                    <button className='Button' onClick={handleSubscribe}>{showLoading?<div class="loader"></div>:"Subscribe"}</button>
                 </div>}
 
         </div>
