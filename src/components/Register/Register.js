@@ -67,11 +67,18 @@ const Register = () => {
         setPayment({...payment,batch_id: e.target.value})
         getBatch(payment.batch_id).then((res)=>{
             setPrice(res.data.batch.price)
+            payment.price=price;
             console.log(res.data.batch.price)
             setPayment({...payment,price:price})
         })
         console.log(price);
     }
+
+    const handleExistingSubscribe = async (e) => {
+        setShowSubscription(false);
+        setShowloading(false);
+    }
+
 
     return (
         <div className='body'>
@@ -118,6 +125,8 @@ const Register = () => {
                         </div>
                     </div>
                     <button className='Button' onClick = {handleSubmit} >{showLoading?<div class="loader"></div>:"Create"}</button>
+
+                    <button className='Button' onClick = {handleExistingSubscribe} >{showLoading?<div class="loader"></div>:"Already created? Subscribe now"}</button>
                 </div>
 
 
@@ -139,7 +148,7 @@ const Register = () => {
                             </select>
                         </div>
                         <div className='inputBox'>
-                            <input className='input' type='number' placeholder='Price*' value={price} />
+                            <input className='input' type='number' placeholder='Price*' value={payment.price === 0?'':price} />
                         </div>
                     </div>
                     <button className='Button' onClick={handleSubscribe}>{showLoading?<div class="loader"></div>:"Subscribe"}</button>
