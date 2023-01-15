@@ -17,7 +17,7 @@ const UserList = () => {
       <div className='Heading'>User List</div>
       <div className='userTable'>
         <div className='tableHead'>
-          <div className='sl'>Sl.</div>
+          <div className='slhead'>User ID</div>
           <div className='Name'>Name</div>
           <div className='Age'>Age</div>
           <div className='gender'>Gender</div>
@@ -32,7 +32,7 @@ const UserList = () => {
         {userList.map((user,index) => (
           <div className='userCard'>
 
-            <div className='sl'>{index+1}</div>
+            <div className='sl'>{user.id}</div>
             <div className='Name'>{user.first_name} {user.last_name}</div>
             <div className='Age'>{user.age}</div>
             <div className='gender'>{user.gender}</div>

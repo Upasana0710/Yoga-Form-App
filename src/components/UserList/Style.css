@@ -40,14 +40,21 @@
     flex: wrap;
 }
 
+.slhead{
+    width: 100%;
+    max-width: 110px;
+}
+
 .sl{
     width: 100%;
-    max-width: 42px;
+    max-width: 110px;
+    font-weight: 600;
+    font-size: 11px;
 }
 
 .Name{
     width: 100%;
-    max-width: 144px;
+    max-width: 134px;
 }
 
 .Age{
@@ -88,12 +95,12 @@
 
 .addressHead{
     width: 100%;
-    max-width: 210px;
+    max-width: 140px;
 }
 
 .address{
     width: 100%;
-    max-width: 210px;
+    max-width: 140px;
     font-weight: 600;
     font-size: 11px;
     
