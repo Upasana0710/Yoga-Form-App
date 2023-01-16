@@ -42,11 +42,7 @@ const Register = () => {
     }
 
     const handleSubscribe = async (e) => {
-        setShowloading(true)
-        if (payment.batch_id === '' || payment.userId === '') {
-            alert('Please fill up the required fields!');
-        }
-        setShowSubscription(true);
+        setShowloading(true)       
         // setPayment({...payment,price: Number(payment.price)});
 
         setPayment({ ...payment, userId: userId })
@@ -59,6 +55,11 @@ const Register = () => {
             console.log(error)
             setShowloading(false)
         })
+        if (payment.batch_id === '' || payment.userId === '') {
+            alert('Please fill up the required fields!');
+        }
+        alert('Subscription succesful!')
+        setShowSubscription(true);
 
     }
 
@@ -82,6 +83,7 @@ const Register = () => {
     return (
         <div className='body'>
             {showSubscription ?
+            <form id='createForm'>
                 <div className='card'>
                     <div className='heading'>Create User</div>
                     <div className='form'>
@@ -127,6 +129,7 @@ const Register = () => {
 
                     <button className='Button' onClick={handleExistingSubscribe} >{showLoading ? <div class="loader"></div> : "Already created? Subscribe now"}</button>
                 </div>
+                </form>
 
 
                 :
