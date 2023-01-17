@@ -9,7 +9,7 @@ const Register = () => {
 
     const [payment, setPayment] = useState({ price: 0, batch_id: '', userId: ''})
 
-    const [showSubscription, setShowSubscription] = useState(true)
+    const [showSubscription, setShowSubscription] = useState(false)
 
     const [userId, setUserId] = useState('')
 
@@ -33,7 +33,8 @@ const Register = () => {
         await createUser(user).then((res) => {
             console.log(res)
             setUserId(res.data.user.id)
-            setShowSubscription(false);
+            setDirectSubscribe(false);
+            setShowSubscription(true);
             setShowloading(false);
         }).catch((error) => {
             console.log(error)
@@ -59,7 +60,7 @@ const Register = () => {
             alert('Please fill up the required fields!');
         }
         alert('Subscription succesful!')
-        setShowSubscription(true);
+        setShowSubscription(false);
 
     }
 
@@ -74,7 +75,7 @@ const Register = () => {
     }
 
     const handleExistingSubscribe = async (e) => {
-        setShowSubscription(false);
+        setShowSubscription(true);
         setShowloading(false);
         setDirectSubscribe(true);
     }
@@ -82,7 +83,7 @@ const Register = () => {
 
     return (
         <div className='body'>
-            {showSubscription ?
+            {!showSubscription ?
             <form id='createForm'>
                 <div className='card'>
                     <div className='heading'>Create User</div>
